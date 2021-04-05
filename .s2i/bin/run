@@ -2,6 +2,10 @@
 
 JAR=$(ls /deployments | grep -E "*.jar$")
 
+if [ -z "$AB_JOLOKIA_CONFIG" ]; then
+    AB_JOLOKIA_CONFIG=/opt/jolokia/etc/jolokia.properties
+fi
+
 echo "INFO exec java -javaagent:/usr/share/java/jolokia-jvm-agent/jolokia-jvm.jar=config=$AB_JOLOKIA_CONFIG $JAVA_OPTIONS -cp "." -jar /deployments/$JAR"
 
 exec java -javaagent:/usr/share/java/jolokia-jvm-agent/jolokia-jvm.jar=config=$AB_JOLOKIA_CONFIG $JAVA_OPTIONS $JAVA_OPTIONS -cp "." -jar /deployments/$JAR
