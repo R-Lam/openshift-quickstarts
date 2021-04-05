@@ -1,6 +1,6 @@
 #!/bin/sh
 
-JAR=$(ls /deployments | grep -E "*.jar$")
+JAR=$(ls /deployments | grep -E "*.war$")
 
 if [ -z "$AB_JOLOKIA_CONFIG" ]; then
     mkdir -p /opt/jolokia/etc
